@@ -1,7 +1,13 @@
 {
   "name": "nexusrealm",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/StormbringerDev/nexusrealm"
+  },
+  "author": "StormbringerDev",
+  "license": "AGPL-v3.0-only",
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
