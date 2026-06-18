@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach } from 'vitest'
 import { createTestDb } from '../test-utils/db'
-import { characters } from '../src/db/schema'
+import { character } from '../src/db/schema'
 import { eq } from 'drizzle-orm'
 
 describe('Character repository', () => {
@@ -12,8 +12,8 @@ describe('Character repository', () => {
   })
 
   it('should create and retrieve a character', async () => {
-    await db.insert(characters).values({
-      user: 'StormbringerDev',
+    await db.insert(character).values({
+      userId: 'StormbringerDev',
       name: 'Reyek',
       race: 'half-elf',
       class: 'wizard',
@@ -29,11 +29,11 @@ describe('Character repository', () => {
       cha: 12,
     })
 
-    const result = await db.select().from(characters).where(eq(characters.name, 'Reyek'))
+    const result = await db.select().from(character).where(eq(character.name, 'Reyek'))
 
     expect(result).toHaveLength(1)
-    expect(result[0]).toHaveProperty('id')
-    expect(result[0].user).toEqual('StormbringerDev')
+    expect(result[0].id).not.toBeNull()
+    expect(result[0].userId).toEqual('StormbringerDev')
     expect(result[0].name).toEqual('Reyek')
     expect(result[0].race).toEqual('half-elf')
     expect(result[0].subrace).toBeNull()
