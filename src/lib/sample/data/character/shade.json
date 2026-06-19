@@ -1,0 +1,114 @@
+{
+  "id": "d80c1c2d-974d-4a20-941c-52115765ad51",
+  "userId": "StormbringerDev",
+  "name": "Shade",
+  "race": "tiefling",
+  "class": "monk",
+  "subclass": "way-of-shadow",
+  "background": "sage",
+  "alignment": "Neutral Good",
+  "level": 3,
+  "xp": 900,
+  "abilityScores": {
+    "str": 12,
+    "dex": 15,
+    "con": 12,
+    "int": 12,
+    "wis": 14,
+    "cha": 10
+  },
+  "savingThrows": {
+    "str": true,
+    "dex": true
+  },
+  "skills": [
+    {
+      "name": "Acrobatics",
+      "ability": "dex",
+      "proficient": true
+    },
+    {
+      "name": "Animal Handling",
+      "ability": "wis"
+    },
+    {
+      "name": "Arcana",
+      "ability": "int"
+    },
+    {
+      "name": "Athletics",
+      "ability": "str"
+    },
+    {
+      "name": "Deception",
+      "ability": "cha"
+    },
+    {
+      "name": "History",
+      "ability": "int"
+    },
+    {
+      "name": "Insight",
+      "ability": "wis"
+    },
+    {
+      "name": "Intimidation",
+      "ability": "cha"
+    },
+    {
+      "name": "Investigation",
+      "ability": "int"
+    },
+    {
+      "name": "Medicine",
+      "ability": "wis",
+      "proficient": true
+    },
+    {
+      "name": "Nature",
+      "ability": "int"
+    },
+    {
+      "name": "Perception",
+      "ability": "wis"
+    },
+    {
+      "name": "Performance",
+      "ability": "cha"
+    },
+    {
+      "name": "Persuasion",
+      "ability": "cha"
+    },
+    {
+      "name": "Religion",
+      "ability": "int",
+      "proficient": true
+    },
+    {
+      "name": "Sleight of Hand",
+      "ability": "dex"
+    },
+    {
+      "name": "Stealth",
+      "ability": "dex",
+      "proficient": true
+    },
+    {
+      "name": "Survival",
+      "ability": "wis"
+    }
+  ],
+  "proficiencies": {
+    "armor": [],
+    "weapons": ["simple", "shortsword"],
+    "tools": ["herbalism-kit", "lyre"],
+    "languages": ["abyssal", "common", "infernal"]
+  },
+  "speed": 30,
+  "armorClass": 14,
+  "hitPoints": {
+    "current": 21,
+    "maximum": 21
+  }
+}

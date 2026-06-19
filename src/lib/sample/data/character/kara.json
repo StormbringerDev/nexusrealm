@@ -1,0 +1,116 @@
+{
+  "id": "137fec65-f242-48da-ba0a-a8bd68b1cf4c",
+  "userId": "StormbringerDev",
+  "name": "Karastevi \"Kara\" Luret",
+  "race": "elf",
+  "subrace": "dark-elf",
+  "class": "paladin",
+  "subclass": "vengeance-oath",
+  "background": "soldier",
+  "alignment": "True Neutral",
+  "level": 3,
+  "xp": 900,
+  "abilityScores": {
+    "str": 15,
+    "dex": 12,
+    "con": 14,
+    "int": 8,
+    "wis": 12,
+    "cha": 14
+  },
+  "savingThrows": {
+    "wis": true,
+    "cha": true
+  },
+  "skills": [
+    {
+      "name": "Acrobatics",
+      "ability": "dex"
+    },
+    {
+      "name": "Animal Handling",
+      "ability": "wis"
+    },
+    {
+      "name": "Arcana",
+      "ability": "int"
+    },
+    {
+      "name": "Athletics",
+      "ability": "str",
+      "proficient": true
+    },
+    {
+      "name": "Deception",
+      "ability": "cha"
+    },
+    {
+      "name": "History",
+      "ability": "int"
+    },
+    {
+      "name": "Insight",
+      "ability": "wis",
+      "proficient": true
+    },
+    {
+      "name": "Intimidation",
+      "ability": "cha",
+      "proficient": true
+    },
+    {
+      "name": "Investigation",
+      "ability": "int"
+    },
+    {
+      "name": "Medicine",
+      "ability": "wis"
+    },
+    {
+      "name": "Nature",
+      "ability": "int"
+    },
+    {
+      "name": "Perception",
+      "ability": "wis",
+      "proficient": true
+    },
+    {
+      "name": "Performance",
+      "ability": "cha"
+    },
+    {
+      "name": "Persuasion",
+      "ability": "cha"
+    },
+    {
+      "name": "Religion",
+      "ability": "int",
+      "proficient": true
+    },
+    {
+      "name": "Sleight of Hand",
+      "ability": "dex"
+    },
+    {
+      "name": "Stealth",
+      "ability": "dex"
+    },
+    {
+      "name": "Survival",
+      "ability": "wis"
+    }
+  ],
+  "proficiencies": {
+    "armor": ["light", "medium", "heavy", "shields"],
+    "weapons": ["simple", "martial"],
+    "tools": ["playing-card-set", "land-vehicles"],
+    "languages": ["common", "elvish", "undercommon"]
+  },
+  "speed": 30,
+  "armorClass": 16,
+  "hitPoints": {
+    "current": 28,
+    "maximum": 28
+  }
+}

@@ -1,0 +1,116 @@
+{
+  "id": "229e0c67-d928-4109-843c-235790cc0e58",
+  "userId": "StormbringerDev",
+  "name": "Reyek",
+  "race": "half-elf",
+  "class": "wizard",
+  "subclass": "transmutation-school",
+  "background": "sage",
+  "alignment": "True Neutral",
+  "level": 3,
+  "xp": 900,
+  "abilityScores": {
+    "str": 8,
+    "dex": 14,
+    "con": 14,
+    "int": 16,
+    "wis": 12,
+    "cha": 12
+  },
+  "savingThrows": {
+    "int": true,
+    "wis": true
+  },
+  "skills": [
+    {
+      "name": "Acrobatics",
+      "ability": "dex"
+    },
+    {
+      "name": "Animal Handling",
+      "ability": "wis"
+    },
+    {
+      "name": "Arcana",
+      "ability": "int",
+      "proficient": true
+    },
+    {
+      "name": "Athletics",
+      "ability": "str"
+    },
+    {
+      "name": "Deception",
+      "ability": "cha"
+    },
+    {
+      "name": "History",
+      "ability": "int",
+      "proficient": true
+    },
+    {
+      "name": "Insight",
+      "ability": "wis",
+      "proficient": true
+    },
+    {
+      "name": "Intimidation",
+      "ability": "cha"
+    },
+    {
+      "name": "Investigation",
+      "ability": "int",
+      "proficient": true
+    },
+    {
+      "name": "Medicine",
+      "ability": "wis"
+    },
+    {
+      "name": "Nature",
+      "ability": "int"
+    },
+    {
+      "name": "Perception",
+      "ability": "wis",
+      "proficient": true
+    },
+    {
+      "name": "Performance",
+      "ability": "cha"
+    },
+    {
+      "name": "Persuasion",
+      "ability": "cha",
+      "proficient": true
+    },
+    {
+      "name": "Religion",
+      "ability": "int"
+    },
+    {
+      "name": "Sleight of Hand",
+      "ability": "dex"
+    },
+    {
+      "name": "Stealth",
+      "ability": "dex"
+    },
+    {
+      "name": "Survival",
+      "ability": "wis"
+    }
+  ],
+  "proficiencies": {
+    "armor": [],
+    "weapons": ["light-crossbow", "dagger", "dart", "quarterstaff", "sling"],
+    "tools": [],
+    "languages": ["common", "draconic", "elvish", "infernal", "undercommon"]
+  },
+  "speed": 30,
+  "armorClass": 12,
+  "hitPoints": {
+    "current": 20,
+    "maximum": 20
+  }
+}

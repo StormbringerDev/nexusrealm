@@ -1,7 +1,8 @@
 import { headers } from 'next/headers';
+import { redirect } from 'next/navigation';
 
 import { auth } from '@/lib/auth';
-import { redirect } from 'next/navigation';
+import { CharacterCard } from '@/components/character-card';
 
 export default async function Page() {
   const session = await auth.api.getSession({
@@ -12,8 +13,10 @@ export default async function Page() {
     redirect('/login');
   } else {
     return (
-      <div className="flex items-center justify-center h-full w-full">
-        <h1 className="text-5xl font-bold">Welcome {session.user.name}</h1>
+      <div className="flex flex-col w-full">
+        <div className="grid grid-cols-3 grid-rows-1 w-full">
+          <CharacterCard />
+        </div>
       </div>
     );
   }

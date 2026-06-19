@@ -1,0 +1,114 @@
+{
+  "id": "41c35c48-0486-4405-8c99-4739ab3229c5",
+  "userId": "StormbringerDev",
+  "name": "Tevaan",
+  "race": "dragonborn",
+  "class": "cleric",
+  "subclass": "life-domain",
+  "background": "acolyte",
+  "alignment": "Lawful Good",
+  "level": 3,
+  "xp": 900,
+  "abilityScores": {
+    "str": 13,
+    "dex": 12,
+    "con": 14,
+    "int": 10,
+    "wis": 15,
+    "cha": 11
+  },
+  "savingThrows": {
+    "wis": true,
+    "cha": true
+  },
+  "skills": [
+    {
+      "name": "Acrobatics",
+      "ability": "dex"
+    },
+    {
+      "name": "Animal Handling",
+      "ability": "wis"
+    },
+    {
+      "name": "Arcana",
+      "ability": "int"
+    },
+    {
+      "name": "Athletics",
+      "ability": "str"
+    },
+    {
+      "name": "Deception",
+      "ability": "cha"
+    },
+    {
+      "name": "History",
+      "ability": "int",
+      "proficient": true
+    },
+    {
+      "name": "Insight",
+      "ability": "wis",
+      "proficient": true
+    },
+    {
+      "name": "Intimidation",
+      "ability": "cha"
+    },
+    {
+      "name": "Investigation",
+      "ability": "int"
+    },
+    {
+      "name": "Medicine",
+      "ability": "wis",
+      "proficient": true
+    },
+    {
+      "name": "Nature",
+      "ability": "int"
+    },
+    {
+      "name": "Perception",
+      "ability": "wis"
+    },
+    {
+      "name": "Performance",
+      "ability": "cha"
+    },
+    {
+      "name": "Persuasion",
+      "ability": "cha"
+    },
+    {
+      "name": "Religion",
+      "ability": "int",
+      "proficient": true
+    },
+    {
+      "name": "Sleight of Hand",
+      "ability": "dex"
+    },
+    {
+      "name": "Stealth",
+      "ability": "dex"
+    },
+    {
+      "name": "Survival",
+      "ability": "wis"
+    }
+  ],
+  "proficiencies": {
+    "armor": ["light", "medium", "heavy", "shields"],
+    "weapons": ["simple"],
+    "tools": [],
+    "languages": ["common", "draconic", "elvish", "halfling"]
+  },
+  "speed": 30,
+  "armorClass": 18,
+  "hitPoints": {
+    "current": 24,
+    "maximum": 24
+  }
+}
