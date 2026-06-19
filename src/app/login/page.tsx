@@ -1,7 +1,7 @@
-import Form from 'next/form'
-import Link from 'next/link'
+import Form from 'next/form';
+import Link from 'next/link';
 
-import { Button } from '@/components/ui/button'
+import { Button } from '@/components/ui/button';
 import {
   Card,
   CardAction,
@@ -10,11 +10,11 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card'
-import { Field, FieldGroup, FieldLabel } from '@/components/ui/field'
-import { Input } from '@/components/ui/input'
+} from '@/components/ui/card';
+import { Field, FieldGroup, FieldLabel } from '@/components/ui/field';
+import { Input } from '@/components/ui/input';
 
-import { signInAction } from '../actions/auth'
+import { signInAction } from '../actions/auth';
 
 export default function Page() {
   return (
@@ -65,5 +65,5 @@ export default function Page() {
         </CardFooter>
       </Card>
     </div>
-  )
+  );
 }

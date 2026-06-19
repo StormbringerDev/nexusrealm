@@ -11,12 +11,12 @@ import {
   Swords,
   User,
   Users,
-} from 'lucide-react'
+} from 'lucide-react';
 
 interface NavItem {
-  title: string
-  url: string
-  icon: LucideIcon
+  title: string;
+  url: string;
+  icon: LucideIcon;
 }
 
 export const coreItems: NavItem[] = [
@@ -35,7 +35,7 @@ export const coreItems: NavItem[] = [
     url: '/party',
     icon: Users,
   },
-]
+];
 
 export const loreItems: NavItem[] = [
   {
@@ -63,7 +63,7 @@ export const loreItems: NavItem[] = [
     url: '/world/events',
     icon: Clock,
   },
-]
+];
 
 export const gameplayItems: NavItem[] = [
   {
@@ -96,4 +96,4 @@ export const gameplayItems: NavItem[] = [
     url: '/gameplay/compendium',
     icon: Book,
   },
-]
+];

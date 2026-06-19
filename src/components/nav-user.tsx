@@ -1,9 +1,9 @@
-'use client'
+'use client';
 
-import { ChevronsUpDown, LogIn, LogOut, Plus } from 'lucide-react'
-import { redirect } from 'next/navigation'
+import { ChevronsUpDown, LogIn, LogOut, Plus } from 'lucide-react';
+import { redirect } from 'next/navigation';
 
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -12,38 +12,38 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
+} from '@/components/ui/dropdown-menu';
 import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
   useSidebar,
-} from '@/components/ui/sidebar'
-import { User } from '@/lib/auth'
-import { signOutAction } from '@/app/actions/auth'
+} from '@/components/ui/sidebar';
+import { User } from '@/lib/auth';
+import { signOutAction } from '@/app/actions/auth';
 
 export function NavUser({ user }: { user?: User }) {
-  const { isMobile } = useSidebar()
-  let name: string
-  let image: string | undefined
-  let email: string
+  const { isMobile } = useSidebar();
+  let name: string;
+  let image: string | undefined;
+  let email: string;
 
   if (user) {
-    name = user.name
-    image = user.image as string
-    email = user.email
+    name = user.name;
+    image = user.image as string;
+    email = user.email;
   } else {
-    name = 'Not logged in'
-    image = undefined
-    email = 'Login or create an account'
+    name = 'Not logged in';
+    image = undefined;
+    email = 'Login or create an account';
   }
 
   function handleLoginClick() {
-    redirect('/login')
+    redirect('/login');
   }
 
   function handleSignupClick() {
-    redirect('/signup')
+    redirect('/signup');
   }
 
   return (
@@ -107,5 +107,5 @@ export function NavUser({ user }: { user?: User }) {
         </DropdownMenu>
       </SidebarMenuItem>
     </SidebarMenu>
-  )
+  );
 }

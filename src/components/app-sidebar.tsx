@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import {
   Sidebar,
@@ -11,18 +11,18 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from '@/components/ui/sidebar'
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+} from '@/components/ui/sidebar';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
-import { CampaignSwitcher } from '@/components/campaign-switcher'
-import { NavUser } from '@/components/nav-user'
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible'
-import { coreItems, gameplayItems, loreItems } from '@/lib/nav'
-import { User } from '@/lib/auth'
+import { CampaignSwitcher } from '@/components/campaign-switcher';
+import { NavUser } from '@/components/nav-user';
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
+import { coreItems, gameplayItems, loreItems } from '@/lib/nav';
+import { User } from '@/lib/auth';
 
 export function AppSidebar({ user }: { user?: User }) {
-  const pathname = usePathname()
+  const pathname = usePathname();
 
   return (
     <Sidebar>
@@ -93,5 +93,5 @@ export function AppSidebar({ user }: { user?: User }) {
         <NavUser user={user} />
       </SidebarFooter>
     </Sidebar>
-  )
+  );
 }

@@ -1,14 +1,14 @@
-'use server'
+'use server';
 
-import { auth } from '@/lib/auth'
-import { headers } from 'next/headers'
-import { redirect } from 'next/navigation'
+import { auth } from '@/lib/auth';
+import { headers } from 'next/headers';
+import { redirect } from 'next/navigation';
 
 export async function signUpAction(formData: FormData) {
   // TODO: implement form validation
-  const email = formData.get('email') as string
-  const password = formData.get('password') as string
-  const name = formData.get('username') as string
+  const email = formData.get('email') as string;
+  const password = formData.get('password') as string;
+  const name = formData.get('username') as string;
 
   await auth.api.signUpEmail({
     body: {
@@ -16,30 +16,30 @@ export async function signUpAction(formData: FormData) {
       password,
       name,
     },
-  })
+  });
 
-  redirect('/dashboard')
+  redirect('/dashboard');
 }
 
 export async function signInAction(formData: FormData) {
   // TODO: implement form validation
-  const email = formData.get('email') as string
-  const password = formData.get('password') as string
+  const email = formData.get('email') as string;
+  const password = formData.get('password') as string;
 
   await auth.api.signInEmail({
     body: {
       email,
       password,
     },
-  })
+  });
 
-  redirect('/dashboard')
+  redirect('/dashboard');
 }
 
 export async function signOutAction() {
   await auth.api.signOut({
     headers: await headers(),
-  })
+  });
 
-  redirect('/login')
+  redirect('/login');
 }

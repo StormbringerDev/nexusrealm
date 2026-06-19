@@ -1,6 +1,6 @@
-'use client'
+'use client';
 
-import * as React from 'react'
+import * as React from 'react';
 
 import {
   DropdownMenu,
@@ -8,21 +8,21 @@ import {
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
+} from '@/components/ui/dropdown-menu';
 import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
   useSidebar,
-} from '@/components/ui/sidebar'
-import { Campaign } from '@/lib/types/dnd/campaign'
+} from '@/components/ui/sidebar';
+import { CampaignFormData } from '@/lib/types/campaign';
 
-export function CampaignSwitcher({ campaigns }: { campaigns: Campaign[] }) {
-  const { isMobile } = useSidebar()
-  const [activeCampaign, setActiveCampaign] = React.useState(campaigns[0])
+export function CampaignSwitcher({ campaigns }: { campaigns: CampaignFormData[] }) {
+  const { isMobile } = useSidebar();
+  const [activeCampaign, setActiveCampaign] = React.useState(campaigns[0]);
 
   if (!activeCampaign) {
-    return null
+    return null;
   }
 
   return (
@@ -61,5 +61,5 @@ export function CampaignSwitcher({ campaigns }: { campaigns: Campaign[] }) {
         </DropdownMenu>
       </SidebarMenuItem>
     </SidebarMenu>
-  )
+  );
 }

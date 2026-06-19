@@ -32,7 +32,13 @@ cd nexusrealm
 pnpm install # or npm/yarn install
 ```
 
-3. Run development server
+3. Run migrations
+
+```bash
+pnpm drizzle-kit migrate # npx drizzle-kit migrate or yarn drizzle-kit migrate
+```
+
+4. Run development server
 
 ```bash
 pnpm dev # npm run dev or yarn dev works here

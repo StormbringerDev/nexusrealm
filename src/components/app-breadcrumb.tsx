@@ -1,9 +1,9 @@
-'use client'
+'use client';
 
-import * as React from 'react'
+import * as React from 'react';
 
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 import {
   Breadcrumb,
@@ -12,14 +12,14 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from '@/components/ui/breadcrumb'
-import { toTitleCase } from '@/lib/utils/strings'
+} from '@/components/ui/breadcrumb';
+import { toTitleCase } from '@/lib/utils/strings';
 
 export function AppBreadcrumb() {
-  const pathname = usePathname()
-  const pathItems = pathname.split('/')
-  const breadcrumbItems = []
-  let breadcrumbPage
+  const pathname = usePathname();
+  const pathItems = pathname.split('/');
+  const breadcrumbItems = [];
+  let breadcrumbPage;
 
   for (const pathItem of pathItems) {
     if (pathname.endsWith(pathItem)) {
@@ -27,7 +27,7 @@ export function AppBreadcrumb() {
         <BreadcrumbItem key={pathItem}>
           <BreadcrumbPage>{toTitleCase(pathItem)}</BreadcrumbPage>
         </BreadcrumbItem>
-      )
+      );
     } else {
       breadcrumbItems.push(
         <React.Fragment key={pathname}>
@@ -38,7 +38,7 @@ export function AppBreadcrumb() {
             </BreadcrumbLink>
           </BreadcrumbItem>
         </React.Fragment>,
-      )
+      );
     }
   }
 
@@ -55,5 +55,5 @@ export function AppBreadcrumb() {
         {breadcrumbPage}
       </BreadcrumbList>
     </Breadcrumb>
-  )
+  );
 }
