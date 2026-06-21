@@ -8,6 +8,7 @@ import { ThemeProvider } from '@/components/theme-provider';
 import { SidebarProvider, SidebarTrigger, SidebarInset } from '@/components/ui/sidebar';
 import { auth } from '@/lib/auth';
 import { cn } from '@/lib/utils';
+import { ModeToggle } from '@/components/mode-toggle';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
 
@@ -49,18 +50,14 @@ export default async function RootLayout({
       )}
     >
       <body className="min-h-full flex flex-col">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
           <SidebarProvider>
             <AppSidebar user={session ? session.user : undefined} />
             <SidebarInset>
-              <header className="flex h-14 items-center gap-2 borger-b px-4">
+              <header className="flex h-14 items-center w-full gap-2 border-b px-4">
                 <SidebarTrigger />
                 <AppBreadcrumb />
+                <ModeToggle className="ml-auto" />
               </header>
               <main className="flex-1 p-4">{children}</main>
             </SidebarInset>
