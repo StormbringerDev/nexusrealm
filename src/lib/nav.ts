@@ -26,7 +26,7 @@ export const coreItems: NavItem[] = [
     icon: Home,
   },
   {
-    title: 'Character Builder',
+    title: 'Characters',
     url: '/character',
     icon: User,
   },

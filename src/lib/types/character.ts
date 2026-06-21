@@ -54,3 +54,13 @@ export interface Character {
     temporary?: number;
   };
 }
+
+export interface CharacterFormData {
+  id: string;
+  name: string;
+  race: string;
+  subrace?: string;
+  class: string;
+  subclass?: string;
+  level: number;
+}

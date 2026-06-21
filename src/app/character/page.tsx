@@ -1,9 +1,8 @@
 import { headers } from 'next/headers';
 import { redirect } from 'next/navigation';
 
-import { DashboardCharacterCard } from '@/components/character-card';
-import { DashboardCampaignCard } from '@/components/campaign-card';
 import { fetchCharactersAction } from '@/app/actions/characters';
+import { CharacterCard } from '@/components/character-card';
 import { auth } from '@/lib/auth';
 
 export default async function Page() {
@@ -17,11 +16,10 @@ export default async function Page() {
     redirect('/login');
   } else {
     return (
-      <div className="flex flex-col w-full">
-        <div className="grid grid-cols-3 grid-rows-1 gap-4 w-full max-h-68">
-          <DashboardCampaignCard campaigns={[]} />
-          <DashboardCharacterCard characters={characters.slice(0, 5)} />
-        </div>
+      <div className="grid grid-cols-3 gap-4 w-full">
+        {characters.map(character => (
+          <CharacterCard key={character.id} character={character} />
+        ))}
       </div>
     );
   }

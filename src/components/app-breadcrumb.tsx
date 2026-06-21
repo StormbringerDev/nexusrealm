@@ -25,7 +25,7 @@ export function AppBreadcrumb() {
     if (pathname.endsWith(pathItem)) {
       breadcrumbPage = (
         <BreadcrumbItem key={pathItem}>
-          <BreadcrumbPage>{toTitleCase(pathItem)}</BreadcrumbPage>
+          <BreadcrumbPage>{toTitleCase(pathItem, '-')}</BreadcrumbPage>
         </BreadcrumbItem>
       );
     } else {
@@ -34,7 +34,7 @@ export function AppBreadcrumb() {
           <BreadcrumbSeparator />
           <BreadcrumbItem>
             <BreadcrumbLink asChild>
-              <Link href={pathname}>{toTitleCase(pathItem)}</Link>
+              <Link href={pathname}>{toTitleCase(pathItem, '-')}</Link>
             </BreadcrumbLink>
           </BreadcrumbItem>
         </React.Fragment>,
