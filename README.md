@@ -11,38 +11,54 @@ NexusRealm is a self-hosted suite of tools for Dungeons & Dragons 5th Edition.
 
 ## Installation
 
-### Prerequisites
+### Local Development
+
+#### Prerequisites
 
 - git
 - Node.js
-- npm, Yarn, or pnpm
+- pnpm (recommended), npm, or Yarn
 
-### Instructions
+#### Steps
 
 1. Clone the repository
-
-```bash
-git clone https://github.com/StormbringerDev/nexusrealm.git
-cd nexusrealm
-```
-
+   ```bash
+   git clone https://github.com/StormbringerDev/nexusrealm.git
+   cd nexusrealm
+   ```
 2. Install dependencies
+   ```bash
+   pnpm install
+   ```
+3. Run database migrations
+   ```bash
+   pnpm drizzle-kit migrate
+   ```
+4. Start the development server
+   ```bash
+   pnpm dev
+   ```
 
-```bash
-pnpm install # or npm/yarn install
-```
+### Docker (Recommended for Production / Homelab)
 
-3. Run migrations
+#### Prerequisites
 
-```bash
-pnpm drizzle-kit migrate # npx drizzle-kit migrate or yarn drizzle-kit migrate
-```
+- Docker and Docker Compose
 
-4. Run development server
+#### Quick Start
 
-```bash
-pnpm dev # npm run dev or yarn dev works here
-```
+1. Clone the repository (same as above).
+2. Configure your environment variables in `docker-compose.yml` (or a `.env` file):
+   - BETTER_AUTH_SECRET - generate with `openssl rand -base64 32`
+   - BETTER_AUTH_URL - e.g. `http://localhost:3000` (or your production domain)
+3. Build and start:
+   ```bash
+   docker compose up -d --build
+   ```
+
+The application will be available at `http://localhost:3000`.  
+Database migrations run automatically on container startup, and your SQLite database is persisted in a Docker volume.  
+For more details, see the Docker files and the `docker compose` service definition.
 
 ## License
 

@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  nexusrealm:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nexusrealm
+    ports:
+      - '3000:3000'
+    environment:
+      # Override these in production or use an .env file
+      - DATABASE_URL=file:/app/data/nexusrealm.db
+      - BETTER_AUTH_SECRET=CHANGE_ME_TO_A_STRONG_SECRET_GENERATED_WITH_openssl_rand_-base64_32
+      - BETTER_AUTH_URL=http://localhost:3000
+      # Add more variables as needed
+    volumes:
+      # Persistent volume for the SQLite database file
+      - nexusrealm-data:/app/data
+    restart: unless-stopped
+    # Healthcheck field just in case /api/health endpoint is added
+    # healthcheck:
+    #   test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3000"]
+    #   interval: 30s
+    #   timeout: 10s
+    #   retries: 3
+    #   start_period: 40s
+
+volumes:
+  nexusrealm-data:
+    drivar: local
