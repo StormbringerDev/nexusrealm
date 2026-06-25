@@ -43,7 +43,9 @@ export function CharacterCard({ character }: { character: CharacterFormData }) {
       </CardContent>
       <CardFooter>
         <div className="flex gap-2 w-full justify-between">
-          <Button>View</Button>
+          <Button>
+            <Link href={`/character/${character.id}`}>View</Link>
+          </Button>
           <Button>Edit</Button>
           <Button>Delete</Button>
         </div>

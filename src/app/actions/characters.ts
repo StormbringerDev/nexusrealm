@@ -15,3 +15,7 @@ export async function fetchCharactersAction() {
 
   return characters;
 }
+
+export async function getCharacterById(id: string) {
+  return allCharacters.find(char => char.id === id);
+}
