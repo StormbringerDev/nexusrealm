@@ -1,6 +1,6 @@
 # NexusRealm
 
-NexusRealm is a self-hosted suite of tools for Dungeons & Dragons 5th Edition.
+NexusRealm is a self-hosted suite of tools for Dungeons & Dragons 5th Edition. You may be thinking, "Why use NexusRealm when so many D&D tools exist?" To that I say, that's a fair question, but not all of those tools run on your hardware (or are free for that matter).
 
 ## Tech Stack
 
