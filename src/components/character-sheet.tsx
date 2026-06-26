@@ -1,7 +1,11 @@
 'use client';
 
+import { useState } from 'react';
+
+import { Button } from '@/components/ui/button';
 import {
   Card,
+  CardAction,
   CardContent,
   CardDescription,
   CardFooter,
@@ -26,25 +30,27 @@ function formatModifier(mod: number): string {
 }
 
 export function CharacterSheet({ character }: { character: Character }) {
+  const [isEditMode, setIsEditMode] = useState(false);
   const proficiencyBonus = getProficiencyBonus(character.level);
 
   return (
     <Card>
       <CardHeader>
         <CardTitle className="text-4xl">{character.name}</CardTitle>
-        <CardDescription className="flex justify-between text-xl">
-          <span>
-            {toTitleCase(character.race, '-', '-')}&nbsp;
-            {character.subrace && `(${toTitleCase(character.subrace, '-')})`}&nbsp;
-            {toTitleCase(character.class, '-')}&nbsp;
-            {character.subclass && `(${toTitleCase(character.subclass, '-')})`}&nbsp; | Level{' '}
-            {character.level}
-          </span>
-          <span>
-            {toTitleCase(character.background, '-')}&nbsp;|&nbsp;
-            {character.alignment}
-          </span>
+        <CardDescription className="text-xl">
+          {toTitleCase(character.race, '-', '-')}&nbsp;
+          {character.subrace && `(${toTitleCase(character.subrace, '-')})`}
+          <br />
+          {toTitleCase(character.class, '-')}&nbsp;
+          {character.subclass && `(${toTitleCase(character.subclass, '-')})`} | Level{' '}
+          {character.level}
+          <br />
+          {toTitleCase(character.background, '-')}&nbsp;|&nbsp;
+          {character.alignment}
         </CardDescription>
+        <CardAction>
+          <Button onClick={() => setIsEditMode(!isEditMode)}>{isEditMode ? 'Save' : 'Edit'}</Button>
+        </CardAction>
       </CardHeader>
       <CardContent className="grid gap-4 lg:grid-cols-2">
         {/* Abilities */}
