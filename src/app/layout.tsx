@@ -57,7 +57,7 @@ export default async function RootLayout({
           <SidebarProvider>
             <AppSidebar user={session ? session.user : undefined} />
             <SidebarInset>
-              <header className="fixed bg-background flex h-14 items-center w-full gap-2 border-b px-4">
+              <header className="fixed top-0 bg-background flex h-14 items-center w-full gap-2 border-b px-4">
                 <SidebarTrigger />
                 <AppBreadcrumb />
                 <Button variant="outline" className="ml-auto">
