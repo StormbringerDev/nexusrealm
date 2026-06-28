@@ -28,4 +28,4 @@ services:
 
 volumes:
   nexusrealm-data:
-    drivar: local
+    driver: local

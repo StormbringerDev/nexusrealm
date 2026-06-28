@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 
 # Base image with Node.js
-FROM node:20-alpine AS base
+FROM node:22-alpine AS base
 
 # ===========================================
 # Dependencies stage - install all packages
@@ -18,7 +18,7 @@ RUN apk add --no-cache \
 WORKDIR /app
 
 # Enable pnpm via corepack (pnpm version will be determined by pnpm-lock.yaml or latest compatible)
-RUN corepack enable && corepack prepare pnpm@9 --activate
+RUN corepack enable && corepack prepare pnpm@10 --activate
 
 # Copy dependency files
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
@@ -33,7 +33,7 @@ FROM base AS builder
 
 WORKDIR /app
 
-RUN corepack enable && corepack prepare pnpm@9 --activate
+RUN corepack enable && corepack prepare pnpm@10 --activate
 
 # Copy installed node_modules from deps stage
 COPY --from=deps /app/node_modules ./node_modules
@@ -58,7 +58,7 @@ ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
 
 # Re-enable pnpm in production image (needed for running drizzle-kit migrate)
-RUN corepack enable && corepack prepare pnpm@9 --activate
+RUN corepack enable && corepack prepare pnpm@10 --activate
 
 # Create a non-root user for security
 RUN addgroup --system --gid 1001 nodejs && \
