@@ -21,7 +21,7 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { CharacterFormData } from '@/lib/types/character';
-import { shorten, toTitleCase } from '@/lib/utils/strings';
+import { shorten, toTitleCase } from '@/lib/utils/format';
 
 export function CharacterCard({ character }: { character: CharacterFormData }) {
   return (

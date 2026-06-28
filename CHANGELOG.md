@@ -13,19 +13,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- 
+- Refactor string utility functions to `lib/utils/format.ts`
 
 ### Deprecated
 
-- 
+-
 
 ### Removed
 
-- 
+-
 
 ### Fixed
 
-- 
+-
 
 ### Security
 

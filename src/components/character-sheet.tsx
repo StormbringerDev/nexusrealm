@@ -3,19 +3,11 @@
 import { useState } from 'react';
 
 import { AbilityScoresGrid } from '@/components/character-sheet/ability-scores-grid';
+import { CharacterHeader } from '@/components/character-sheet/character-header';
 import { CombatStats } from '@/components/character-sheet/combat-stats';
 import { SavesAndSkills } from '@/components/character-sheet/saves-and-skills';
-import { Button } from '@/components/ui/button';
-import {
-  Card,
-  CardAction,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { getProficiencyBonus } from '@/lib/utils/calculations';
-import { toTitleCase } from '@/lib/utils/strings';
 import type { Character } from '@/lib/types/character';
 
 interface CharacterSheetProps {
@@ -54,34 +46,61 @@ export function CharacterSheet({ character, onSave }: CharacterSheetProps) {
 
   return (
     <Card>
-      <CardHeader>
-        <CardTitle className="text-4xl">{character.name}</CardTitle>
-        <CardDescription className="text-xl">
-          {toTitleCase(character.race, '-', '-')}&nbsp;
-          {character.subrace && `(${toTitleCase(character.subrace, '-')})`}
-          <br />
-          {toTitleCase(character.class, '-')}&nbsp;
-          {character.subclass && `(${toTitleCase(character.subclass, '-')})`} | Level{' '}
-          {character.level}
-          <br />
-          {toTitleCase(character.background, '-')}&nbsp;|&nbsp;
-          {character.alignment}
-        </CardDescription>
-        <CardAction>
-          {isEditMode ? (
-            <>
-              <Button variant="outline" onClick={cancelEditing}>
-                Cancel
-              </Button>
-              <Button className="ml-1" onClick={saveChanges}>
-                Save Changes
-              </Button>
-            </>
-          ) : (
-            <Button onClick={startEditing}>Edit</Button>
-          )}
-        </CardAction>
-      </CardHeader>
+      <CharacterHeader
+        character={current}
+        isEditMode={isEditMode}
+        onStartEdit={startEditing}
+        onSave={saveChanges}
+        onCancel={cancelEditing}
+        onNameChange={name =>
+          updateDraft(prev => ({
+            ...prev,
+            name,
+          }))
+        }
+        onRaceChange={race =>
+          updateDraft(prev => ({
+            ...prev,
+            race,
+          }))
+        }
+        onSubraceChange={subrace =>
+          updateDraft(prev => ({
+            ...prev,
+            subrace,
+          }))
+        }
+        onClassChange={charClass =>
+          updateDraft(prev => ({
+            ...prev,
+            class: charClass,
+          }))
+        }
+        onSubclassChange={subclass =>
+          updateDraft(prev => ({
+            ...prev,
+            subclass,
+          }))
+        }
+        onLevelChange={level =>
+          updateDraft(prev => ({
+            ...prev,
+            level,
+          }))
+        }
+        onBackgroundChange={background =>
+          updateDraft(prev => ({
+            ...prev,
+            background,
+          }))
+        }
+        onAlignmentChange={alignment =>
+          updateDraft(prev => ({
+            ...prev,
+            alignment,
+          }))
+        }
+      />
       <CardContent className="grid gap-4 lg:grid-cols-2">
         <AbilityScoresGrid
           scores={current.abilityScores}

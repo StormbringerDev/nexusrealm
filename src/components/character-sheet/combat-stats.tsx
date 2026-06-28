@@ -1,11 +1,12 @@
+'use client';
+
 import { useState } from 'react';
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { getAbilityModifier } from '@/lib/utils/calculations';
-import { formatModifier } from '@/lib/utils/format';
-import { toTitleCase } from '@/lib/utils/strings';
+import { formatModifier, toTitleCase } from '@/lib/utils/format';
 import type { Character } from '@/lib/types/character';
 import { X } from 'lucide-react';
 

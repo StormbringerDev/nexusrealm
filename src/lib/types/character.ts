@@ -16,6 +16,20 @@ export interface Skill {
   expert?: boolean;
 }
 
+export const alignments = [
+  'Lawful Good',
+  'Lawful Neutral',
+  'Lawful Evil',
+  'Neutral Good',
+  'True Neutral',
+  'Neutral Evil',
+  'Chaotic Good',
+  'Chaotic Neutral',
+  'Chaotic Evil',
+] as const;
+
+export type Alignment = (typeof alignments)[number];
+
 export interface Character {
   id: string; // uuid
   userId: string;
@@ -25,16 +39,7 @@ export interface Character {
   class: string;
   subclass?: string;
   background: string;
-  alignment:
-    | 'Lawful Good'
-    | 'Neutral Good'
-    | 'Chaotic Good'
-    | 'Lawful Neutral'
-    | 'True Neutral'
-    | 'Chaotic Neutral'
-    | 'Lawful Evil'
-    | 'Neutral Evil'
-    | 'Chaotic Evil';
+  alignment: Alignment;
   level: number;
   xp?: number;
   abilityScores: AbilityScores;

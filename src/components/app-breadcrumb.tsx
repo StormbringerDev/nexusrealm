@@ -13,7 +13,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb';
-import { toTitleCase } from '@/lib/utils/strings';
+import { toTitleCase } from '@/lib/utils/format';
 
 export function AppBreadcrumb() {
   const pathname = usePathname();

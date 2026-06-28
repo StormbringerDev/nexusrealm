@@ -1,18 +1,18 @@
+'use client';
+
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import type { AbilityKey, AbilityScores } from '@/lib/types/character';
 import { getAbilityModifier } from '@/lib/utils/calculations';
 import { formatModifier } from '@/lib/utils/format';
 
-export function AbilityScoresGrid({
-  scores,
-  isEditMode,
-  onScoreChange,
-}: {
+interface AbilityScoresGridProps {
   scores: AbilityScores;
   isEditMode: boolean;
   onScoreChange: (ability: AbilityKey, value: number) => void;
-}) {
+}
+
+export function AbilityScoresGrid({ scores, isEditMode, onScoreChange }: AbilityScoresGridProps) {
   return (
     <Card className="lg:col-span-2">
       <CardHeader>
