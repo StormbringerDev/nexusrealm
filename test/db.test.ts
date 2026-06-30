@@ -1,53 +1,42 @@
-import { describe, it, expect, beforeEach } from 'vitest';
-import { createTestDb } from '../test-utils/db';
+import { drizzle } from 'drizzle-orm/pglite';
+import { describe, it, beforeEach, expect } from 'vitest';
+import { createTestDb } from './helpers/create-test-db';
 import { character } from '../src/db/schema';
+import { allCharacters } from './helpers/samples/characters';
 import { eq } from 'drizzle-orm';
 
-describe('Character repository', () => {
-  let db: ReturnType<typeof createTestDb>['db'];
+describe('Character queries', () => {
+  let db: ReturnType<typeof drizzle>;
 
   beforeEach(async () => {
-    const { db: testDb } = createTestDb();
-    db = testDb;
+    const testDb = await createTestDb();
+    db = testDb.db;
+
+    await db.insert(character).values(allCharacters);
   });
 
-  it('should create and retrieve a character', async () => {
-    await db.insert(character).values({
-      userId: 'StormbringerDev',
-      name: 'Reyek',
-      race: 'half-elf',
-      class: 'wizard',
-      subclass: 'school-of-transmutation',
-      background: 'sage',
-      alignment: 'True Neutral',
-      level: 3,
-      xp: 900,
-      dex: 14,
-      con: 14,
-      int: 16,
-      wis: 12,
-      cha: 12,
-    });
-
-    const result = await db.select().from(character).where(eq(character.name, 'Reyek'));
+  it('should find character by id', async () => {
+    const result = await db
+      .select()
+      .from(character)
+      .where(eq(character.id, '229e0c67-d928-4109-843c-235790cc0e58'));
 
     expect(result).toHaveLength(1);
-    expect(result[0].id).not.toBeNull();
-    expect(result[0].userId).toEqual('StormbringerDev');
-    expect(result[0].name).toEqual('Reyek');
-    expect(result[0].race).toEqual('half-elf');
-    expect(result[0].subrace).toBeNull();
-    expect(result[0].class).toEqual('wizard');
-    expect(result[0].subclass).toEqual('school-of-transmutation');
-    expect(result[0].background).toEqual('sage');
-    expect(result[0].alignment).toEqual('True Neutral');
-    expect(result[0].level).toEqual(3);
-    expect(result[0].xp).toEqual(900);
-    expect(result[0].str).toEqual(8);
-    expect(result[0].dex).toEqual(14);
-    expect(result[0].con).toEqual(14);
-    expect(result[0].int).toEqual(16);
-    expect(result[0].wis).toEqual(12);
-    expect(result[0].cha).toEqual(12);
+    expect(result[0].name).toBe('Reyek');
+  });
+
+  it('should find characters by userId', async () => {
+    const result1 = await db
+      .select()
+      .from(character)
+      .where(eq(character.userId, 'StormbringerDev'));
+    const result2 = await db.select().from(character).where(eq(character.userId, 'Rockestaur'));
+
+    expect(result1).toHaveLength(3);
+    expect(result1[0].name).toBe('Reyek');
+    expect(result1[1].name).toBe('Shade');
+    expect(result1[2].name).toBe('Tevaan');
+    expect(result2).toHaveLength(1);
+    expect(result2[0].name).toBe('Karastevi "Kara" Luret');
   });
 });

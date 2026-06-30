@@ -1,32 +1,32 @@
-import { relations, sql } from 'drizzle-orm';
-import { index, integer, sqliteTable, text } from 'drizzle-orm/sqlite-core';
-import { v4 as uuidv4 } from 'uuid';
+import { relations } from 'drizzle-orm';
+import { boolean, index, integer, json, pgTable, text, timestamp, uuid } from 'drizzle-orm/pg-core';
 
-export const user = sqliteTable('user', {
+import type { AbilityScores, SavingThrows, Skill } from '@/lib/types/character';
+
+// ============
+// Better-Auth
+// ============
+export const user = pgTable('user', {
   id: text('id').primaryKey(),
   name: text('name').notNull(),
   email: text('email').notNull().unique(),
-  emailVerified: integer('email_verified', { mode: 'boolean' }).default(false).notNull(),
+  emailVerified: boolean('email_verified').default(false).notNull(),
   image: text('image'),
-  createdAt: integer('created_at', { mode: 'timestamp_ms' })
-    .default(sql`(cast(unixepoch('subsecond') * 1000 as integer))`)
-    .notNull(),
-  updatedAt: integer('updated_at', { mode: 'timestamp_ms' })
-    .default(sql`(cast(unixepoch('subsecond') * 1000 as integer))`)
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+  updatedAt: timestamp('updated_at')
+    .defaultNow()
     .$onUpdate(() => /* @__PURE__ */ new Date())
     .notNull(),
 });
 
-export const session = sqliteTable(
+export const session = pgTable(
   'session',
   {
     id: text('id').primaryKey(),
-    expiresAt: integer('expires_at', { mode: 'timestamp_ms' }).notNull(),
+    expiresAt: timestamp('expires_at').notNull(),
     token: text('token').notNull().unique(),
-    createdAt: integer('created_at', { mode: 'timestamp_ms' })
-      .default(sql`(cast(unixepoch('subsecond') * 1000 as integer))`)
-      .notNull(),
-    updatedAt: integer('updated_at', { mode: 'timestamp_ms' })
+    createdAt: timestamp('created_at').defaultNow().notNull(),
+    updatedAt: timestamp('updated_at')
       .$onUpdate(() => /* @__PURE__ */ new Date())
       .notNull(),
     ipAddress: text('ip_address'),
@@ -38,7 +38,7 @@ export const session = sqliteTable(
   table => [index('session_userId_idx').on(table.userId)],
 );
 
-export const account = sqliteTable(
+export const account = pgTable(
   'account',
   {
     id: text('id').primaryKey(),
@@ -50,47 +50,45 @@ export const account = sqliteTable(
     accessToken: text('access_token'),
     refreshToken: text('refresh_token'),
     idToken: text('id_token'),
-    accessTokenExpiresAt: integer('access_token_expires_at', {
-      mode: 'timestamp_ms',
-    }),
-    refreshTokenExpiresAt: integer('refresh_token_expires_at', {
-      mode: 'timestamp_ms',
-    }),
+    accessTokenExpiresAt: timestamp('access_token_expires_at'),
+    refreshTokenExpiresAt: timestamp('refresh_token_expires_at'),
     scope: text('scope'),
     password: text('password'),
-    createdAt: integer('created_at', { mode: 'timestamp_ms' })
-      .default(sql`(cast(unixepoch('subsecond') * 1000 as integer))`)
-      .notNull(),
-    updatedAt: integer('updated_at', { mode: 'timestamp_ms' })
+    createdAt: timestamp('created_at').defaultNow().notNull(),
+    updatedAt: timestamp('updated_at')
       .$onUpdate(() => /* @__PURE__ */ new Date())
       .notNull(),
   },
   table => [index('account_userId_idx').on(table.userId)],
 );
 
-export const verification = sqliteTable(
+export const verification = pgTable(
   'verification',
   {
     id: text('id').primaryKey(),
     identifier: text('identifier').notNull(),
     value: text('value').notNull(),
-    expiresAt: integer('expires_at', { mode: 'timestamp_ms' }).notNull(),
-    createdAt: integer('created_at', { mode: 'timestamp_ms' })
-      .default(sql`(cast(unixepoch('subsecond') * 1000 as integer))`)
-      .notNull(),
-    updatedAt: integer('updated_at', { mode: 'timestamp_ms' })
-      .default(sql`(cast(unixepoch('subsecond') * 1000 as integer))`)
+    expiresAt: timestamp('expires_at').notNull(),
+    createdAt: timestamp('created_at').defaultNow().notNull(),
+    updatedAt: timestamp('updated_at')
+      .defaultNow()
       .$onUpdate(() => /* @__PURE__ */ new Date())
       .notNull(),
   },
   table => [index('verification_identifier_idx').on(table.identifier)],
 );
 
-export const character = sqliteTable('characters', {
-  id: text('id')
-    .primaryKey()
-    .$defaultFn(() => uuidv4()),
+// ============
+// NexusRealm
+// ============
+export const character = pgTable('character', {
+  id: uuid('id').primaryKey().defaultRandom(),
   userId: text('user_id').notNull(),
+  createdAt: timestamp('created_at').defaultNow(),
+  updatedAt: timestamp('updated_at')
+    .defaultNow()
+    .$onUpdate(() => new Date())
+    .notNull(),
   name: text('name').notNull(),
   race: text('race').notNull(),
   subrace: text('subrace'),
@@ -98,16 +96,55 @@ export const character = sqliteTable('characters', {
   subclass: text('subclass'),
   background: text('background').notNull(),
   alignment: text('alignment').notNull(),
-  level: integer('level').default(1),
+  level: integer('level').default(1).notNull(),
   xp: integer('xp'),
-  str: integer('str').default(8),
-  dex: integer('dex').default(8),
-  con: integer('con').default(8),
-  int: integer('int').default(8),
-  wis: integer('wis').default(8),
-  cha: integer('cha').default(8),
+  abilityScores: json('ability_scores')
+    .$type<AbilityScores>()
+    .default({
+      str: 8,
+      dex: 8,
+      con: 8,
+      int: 8,
+      wis: 8,
+      cha: 8,
+    })
+    .notNull(),
+  savingThrows: json('saving_throws')
+    .$type<SavingThrows>()
+    .default({
+      str: false,
+      dex: false,
+      con: false,
+      int: false,
+      wis: false,
+      cha: false,
+    })
+    .notNull(),
+  skills: json('skills').$type<Skill[]>().notNull(),
+  proficiencies: json('proficiencies')
+    .$type<{
+      armor: string[];
+      weapons: string[];
+      tools: string[];
+      languages: string[];
+    }>()
+    .default({
+      armor: [],
+      weapons: [],
+      tools: [],
+      languages: [],
+    })
+    .notNull(),
+  speed: integer('speed').notNull(),
+  armorClass: integer('armor_class').notNull(),
+  hitPoints: json('hit_points')
+    .$type<{ current: number; maximum: number; temporary?: number }>()
+    .notNull(),
 });
 
+// ============
+// Relations
+// ============
 export const userRelations = relations(user, ({ many }) => ({
   sessions: many(session),
   accounts: many(account),

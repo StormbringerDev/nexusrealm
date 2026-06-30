@@ -5,7 +5,7 @@ NexusRealm is a self-hosted suite of tools for Dungeons & Dragons 5th Edition. Y
 ## Tech Stack
 
 - **Frontend/Fullstack**: React & Next.js + Tailwindcss + shadcn/ui
-- **DB**: SQLite and Drizzle (lightweight for self-host)
+- **DB**: PostgreSQL and Drizzle (common in homelab environments)
 - **Auth**: Better-Auth and Argon2
 - **Deployment**: Docker (for easy management in homelab environments)
 

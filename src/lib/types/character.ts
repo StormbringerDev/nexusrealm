@@ -8,6 +8,7 @@ export interface AbilityScores {
 }
 
 export type AbilityKey = keyof AbilityScores;
+export type SavingThrows = Record<AbilityKey, boolean>;
 
 export interface Skill {
   name: string;
@@ -43,7 +44,7 @@ export interface Character {
   level: number;
   xp?: number;
   abilityScores: AbilityScores;
-  savingThrows: Partial<Record<AbilityKey, boolean>>;
+  savingThrows: SavingThrows;
   skills: Skill[];
   proficiencies: {
     armor: string[];
