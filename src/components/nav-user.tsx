@@ -1,8 +1,10 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import { ChevronsUpDown, LogIn, LogOut, Plus } from 'lucide-react';
 import { redirect } from 'next/navigation';
 
+import { signOutAction } from '@/app/actions/auth';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import {
   DropdownMenu,
@@ -20,23 +22,21 @@ import {
   useSidebar,
 } from '@/components/ui/sidebar';
 import { User } from '@/lib/auth';
-import { signOutAction } from '@/app/actions/auth';
+import { iconize } from '@/lib/utils/format';
 
-export function NavUser({ user }: { user?: User }) {
+export function NavUser({ user }: { user?: User | undefined }) {
   const { isMobile } = useSidebar();
-  let name: string;
-  let image: string | undefined;
-  let email: string;
+  const [name, setName] = useState('Not logged in');
+  const [image, setImage] = useState<string | undefined>(undefined);
+  const [email, setEmail] = useState('Login or create an account');
 
-  if (user) {
-    name = user.name;
-    image = user.image as string;
-    email = user.email;
-  } else {
-    name = 'Not logged in';
-    image = undefined;
-    email = 'Login or create an account';
-  }
+  useEffect(() => {
+    if (user) {
+      setName(user.name);
+      setImage(user.image as string | undefined);
+      setEmail(user.email);
+    }
+  }, [name, image, email]);
 
   function handleLoginClick() {
     redirect('/login');
@@ -57,7 +57,7 @@ export function NavUser({ user }: { user?: User }) {
             >
               <Avatar className="h-8 w-8 rounded-lg">
                 <AvatarImage src={image} alt={name} />
-                <AvatarFallback className="rounded-lg">NR</AvatarFallback>
+                <AvatarFallback className="rounded-lg">{iconize(name)}</AvatarFallback>
               </Avatar>
               <div className="grid flex-1 text-left text-sm leading-tight">
                 <span className="truncate font-medium">{name}</span>
@@ -76,7 +76,9 @@ export function NavUser({ user }: { user?: User }) {
               <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
                 <Avatar className="h-8 w-8 rounded-lg">
                   <AvatarImage src={image} alt={name} />
-                  <AvatarFallback className="rounded-lg">NR</AvatarFallback>
+                  <AvatarFallback className="rounded-lg">
+                    {user ? iconize(name) : 'NR'}
+                  </AvatarFallback>
                 </Avatar>
                 <div className="grid flex-1 text-left text-sm leading-tight">
                   <span className="truncate font-medium">{name}</span>

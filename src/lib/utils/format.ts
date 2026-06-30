@@ -60,8 +60,12 @@ export function toTitleCase(
     .join(newSeparator);
 }
 
-export function shorten(input: string, charLimit: number): string {
-  return input.slice(0, charLimit - 1).concat('...');
+export function iconize(str: string): string {
+  return str.charAt(0);
+}
+
+export function shorten(str: string, charLimit: number): string {
+  return str.slice(0, charLimit - 1).concat('...');
 }
 
 export function valuize(input: string): string {
