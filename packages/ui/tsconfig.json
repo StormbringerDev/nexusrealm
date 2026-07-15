@@ -1,0 +1,17 @@
+{
+  "extends": "@nexusrealm/config/typescript/react-library.json",
+  "compilerOptions": {
+    "paths": {
+      "@nexusrealm/ui/*": [
+        "./src/*"
+      ]
+    }
+  },
+  "include": [
+    "."
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}
