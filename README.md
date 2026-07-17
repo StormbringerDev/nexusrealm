@@ -48,12 +48,15 @@ NexusRealm is a self-hosted suite of tools for Dungeons & Dragons 5th Edition. Y
 #### Quick Start
 
 1. Clone the repository (same as above).
-2. Configure your environment variables in `docker-compose.yml` (or a `.env` file):
+2. Configure your environment variables in a `.env` file created at the project route.
+   - POSTGRES_PASSWORD - password for the postgres superuser
+   - POSTGRES_USER - name of the postgres superuser
+   - POSTGRES_DB - name of the database
    - BETTER_AUTH_SECRET - generate with `openssl rand -base64 32`
    - BETTER_AUTH_URL - e.g. `http://localhost:3000` (or your production domain)
 3. Build and start:
    ```bash
-   docker compose --profile prod up -d --build
+   docker compose up -d --build
    ```
 
 The application will be available at `http://localhost:3000`.  
