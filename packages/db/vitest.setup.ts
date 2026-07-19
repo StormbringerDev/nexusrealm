@@ -1,1 +1,1 @@
-import "@nexusrealm/config/vitest/setup-base";
+import '@nexusrealm/config/vitest/setup-base';

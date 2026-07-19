@@ -1,6 +1,6 @@
-import { drizzle } from "drizzle-orm/postgres-js";
-import postgres from "postgres";
-import * as sampleSchema from "./schema/sample.ts";
+import { drizzle } from 'drizzle-orm/postgres-js';
+import postgres from 'postgres';
+import * as sampleSchema from './schema/sample.ts';
 
 const schema = { ...sampleSchema };
 
