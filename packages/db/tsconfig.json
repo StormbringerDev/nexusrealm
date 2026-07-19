@@ -1,0 +1,17 @@
+{
+  "extends": "@nexusrealm/config/typescript/base.json",
+  "compilerOptions": {
+    "paths": {
+      "@nexusrealm/db/*": [
+        "./src/*"
+      ]
+    }
+  },
+  "include": [
+    "."
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}

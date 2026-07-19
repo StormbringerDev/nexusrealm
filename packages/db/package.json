@@ -1,0 +1,32 @@
+{
+  "name": "@nexusrealm/db",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "lint": "eslint",
+    "format": "prettier --write \"**/*.ts\"",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest run --coverage",
+    "e2e": "playwright test"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "drizzle-orm": "^0.45.2",
+    "postgres": "^3.4.9"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "^0.5.4",
+    "@nexusrealm/config": "workspace:*",
+    "@types/node": "^20.19.41",
+    "drizzle-kit": "^0.31.10",
+    "vitest": "^4.1.10"
+  },
+  "exports": {
+    ".": "./src/index.ts",
+    "./schema/*": "./src/schema/*.ts"
+  }
+}
