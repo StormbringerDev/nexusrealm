@@ -1,6 +1,6 @@
 import { eq } from 'drizzle-orm';
 import { drizzle } from 'drizzle-orm/pglite';
-import { describe, it, beforeEach, expect } from 'vitest';
+import { beforeEach, describe, expect, it } from 'vitest';
 import { createTestDb } from './helpers/create-test-db.ts';
 import { users } from '../src/schema/sample.ts';
 
