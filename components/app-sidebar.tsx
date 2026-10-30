@@ -37,23 +37,27 @@ const navItems: NavSection[] = [
   {
     title: "Core",
     items: [
-      {
-        title: "Characters",
-        url: "/nexus/character",
-      },
+      { title: "Characters", url: "/nexus/character" },
+      { title: "Campaigns", url: "/nexus/campaigns" },
     ],
   },
   {
-    title: "Wiki",
-    items: [],
+    title: "World",
+    items: [{ title: "Wiki", url: "/nexus/wiki" }],
+  },
+  {
+    title: "Creation",
+    items: [
+      { title: "Homebrew", url: "/nexus/homebrew" },
+      { title: "Generators", url: "/nexus/generators" },
+    ],
   },
   {
     title: "Gameplay",
     items: [
-      {
-        title: "Rules",
-        url: "/nexus/rules",
-      },
+      { title: "Rules", url: "/nexus/rules" },
+      { title: "Dice", url: "/nexus/dice" },
+      { title: "Initiative", url: "/nexus/initiative" },
     ],
   },
 ];
@@ -77,10 +81,12 @@ export function AppSidebar() {
       <SidebarContent>
         <SidebarGroup>
           <SidebarMenu>
-            {navItems.map((item, index) => (
+            {navItems.map((item) => (
               <Collapsible
                 key={item.title}
-                defaultOpen={index !== 1}
+                defaultOpen={item.items
+                  .map((item) => item.url)
+                  .includes(pathname)}
                 className="group/collapsible"
               >
                 <SidebarMenuItem>
