@@ -15,7 +15,7 @@ export default async function Page() {
   }
 
   return (
-    <div className="flex h-screen flex-col items-center justify-center gap-4">
+    <div className="flex h-full w-full flex-col items-center justify-center gap-4">
       <h1 className="text-4xl font-medium">Welcome to NexusRealm!</h1>
       <p>UI is currently a work in progress.</p>
       <form action={signOutAction}>
