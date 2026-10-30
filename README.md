@@ -30,8 +30,12 @@ pnpm start
 ## Roadmap
 
 - [ ] Character creator
+- [ ] Campaign manager
 - [ ] Rules glossary
 - [ ] Homebrew creator
+- [ ] Dice roller
+- [ ] Initiative tracker
+- [ ] Utility generators (names, towns, loot, etc.)
 - [ ] Worldbuilding wiki
 
 ## License
