@@ -1,9 +1,14 @@
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
-import { signOutAction } from "@/app/actions/auth";
-import { Button } from "@/components/ui/button";
+import { getCampaignsByUserAction } from "@/app/actions/campaign";
+import { getCharactersByUserAction } from "@/app/actions/character";
+import { getUsersAction } from "@/app/actions/users";
+import { getWorldsByUserAction } from "@/app/actions/wiki";
+import { CharacterCard } from "@/components/dashboard/character-card";
 import { auth } from "@/lib/auth";
+import { CampaignCard } from "@/components/dashboard/campaign-card";
+import { WorldCard } from "@/components/dashboard/world-card";
 
 export default async function Page() {
   const session = await auth.api.getSession({
@@ -14,13 +19,26 @@ export default async function Page() {
     return redirect("/login");
   }
 
+  const characters = (await getCharactersByUserAction(session.user.id))
+    .sort((a, b) => b.updatedAt.getTime() - a.updatedAt.getTime())
+    .slice(0, 5);
+
+  const campaigns = (await getCampaignsByUserAction("StormbringerDev"))
+    .sort((a, b) => b.updatedAt.getTime() - a.updatedAt.getTime())
+    .slice(0, 5);
+  const users = await getUsersAction();
+
+  const worlds = await getWorldsByUserAction(session.user.id);
+  const sortedWorlds = worlds
+    .slice()
+    .sort((a, b) => b.updatedAt.getTime() - a.updatedAt.getTime())
+    .slice(0, 5);
+
   return (
-    <div className="flex h-full w-full flex-col items-center justify-center gap-4">
-      <h1 className="text-4xl font-medium">Welcome to NexusRealm!</h1>
-      <p>UI is currently a work in progress.</p>
-      <form action={signOutAction}>
-        <Button type="submit">Sign Out</Button>
-      </form>
+    <div className="grid gap-4 p-4 md:grid-cols-2 xl:grid-cols-4">
+      <CharacterCard characters={characters} />
+      <CampaignCard campaigns={campaigns} users={users} worlds={worlds} />
+      <WorldCard worlds={sortedWorlds} />
     </div>
   );
 }
