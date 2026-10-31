@@ -70,4 +70,6 @@ export interface CharacterFormData {
   class: string;
   subclass?: string;
   level: number;
+  alignment: Alignment;
+  background: string;
 }

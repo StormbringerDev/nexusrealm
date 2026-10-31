@@ -169,6 +169,8 @@ export function characterToFormData(character: Character): CharacterFormData {
     class: character.class,
     subclass: character.subclass,
     level: character.level,
+    alignment: character.alignment,
+    background: character.background,
   };
 }
 
